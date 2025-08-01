@@ -1,0 +1,32 @@
+.machine-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.status {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.status.normal {
+  background-color: #d4edda;
+  color: green;
+}
+
+.status.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.critical {
+  background-color: #f8d7da;
+  color: red;
+}
+
+
