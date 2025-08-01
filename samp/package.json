@@ -1,0 +1,26 @@
+{
+  "name": "hackathon-project",
+  "version": "1.0.0",
+  "description": "A Node.js project for processing machine sensor data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hackathon",
+    "sensors",
+    "data-processing",
+    "machine-learning"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  }
+}

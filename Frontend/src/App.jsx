@@ -300,17 +300,45 @@ const WorkshopWatch = () => {
       .slice(-20); // Show last 20 data points
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  // const handleFileUpload = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
 
-    // Here you would typically send the file to your backend
-    // For demo purposes, we'll just show a success message
-    console.log('File uploaded:', file.name);
-    alert(`File "${file.name}" uploaded successfully! The backend will process this data.`);
+  //   // Here you would typically send the file to your backend
+  //   // For demo purposes, we'll just show a success message
+  //   console.log('File uploaded:', file.name);
+  //   alert(`File "${file.name}" uploaded successfully! The backend will process this data.`);
 
-    setShowUpload(false);
-  };
+  //   setShowUpload(false);
+  // };
+
+  const handleFileUpload = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const response = await fetch('http://localhost:5000/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Upload failed');
+    }
+
+    const result = await response.json();
+    alert(`✅ ${result.message || 'File uploaded successfully!'}`);
+  } catch (error) {
+    console.error(error);
+    alert('❌ Error uploading file.');
+  }
+
+  setShowUpload(false);
+};
+
 
   const exportReport = () => {
     // Simulate PDF export
@@ -455,9 +483,10 @@ const WorkshopWatch = () => {
       <MachineCard key={machineId} machineId={machineId} machine={machine} />
     ))}
   </div>
-
+  
   {/* Charts Section */}
   <div className="charts-grid">
+    
     {/* Historical Chart */}
     <div className="chart-container">
       <div className="chart-header">
